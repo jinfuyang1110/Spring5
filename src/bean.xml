@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--配置User对象创建-->
+    <bean id="user" class="Spring5.User">
+<!-- 通过无参构造调set方法注入属性 property标签 -->
+        <property name="name" value="张三"></property>
+        <property name="id" value="2021"></property>
+    </bean>
+    <bean id="book" class="Spring5.Book">
+<!--  通过有参构造注入属性 constructor标签 -->
+<!--  特殊符号注入 -->
+        <constructor-arg name="name" >
+            <value>
+                <![CDATA[<<屠龙高手>>]]>
+            </value>
+        </constructor-arg>
+<!--    null值注入    -->
+        <constructor-arg name="author" >
+            <null/>
+        </constructor-arg>
+    </bean>
+<!--    注入属性外部bean-->
+    <bean id="userService" class="Spring5.service.UserService">
+<!--        <constructor-arg name="userDao" ref="userDao"></constructor-arg>-->
+        <property name="userDao">
+            <bean id="userDao" class="Spring5.dao.impl.UserDao">
+                <property name="name" value="我是你芭比"></property>
+            </bean>
+        </property>
+    </bean>
+</beans>

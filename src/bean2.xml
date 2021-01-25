@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="stu" class="Spring5.bean.Stu">
+        <property name="arr">
+            <!--  注入数组array -->
+            <array>
+                <value>
+                    中出
+                </value>
+                <value>
+                    三上悠亚
+                </value>
+            </array>
+        </property>
+        <property name="list">
+<!--      集合list     -->
+           <list>
+               <value>
+                   内射
+               </value>
+               <value>
+                   天使萌
+               </value>
+           </list>
+        </property>
+        <property name="maps">
+<!--      map      -->
+            <map>
+                <entry key="内射" value="云烧">
+
+                </entry>
+            </map>
+        </property>
+        <property name="sets">
+<!--      set      -->
+            <set>
+                <value>
+                    强暴龙泽
+                </value>
+            </set>
+        </property>
+        <property name="actors">
+            <list>
+                <bean id="actor01" class="Spring5.bean.Actor">
+                    <property name="name" value="郑爽">
+                    </property>
+                    <property name="age" value="32">
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+<util:list id="bookList">
+    <value>
+        如何中出三上悠亚
+    </value>
+    <value>
+        如何让100个女友集体高潮
+    </value>
+</util:list>
+    <bean id="book" class="Spring5.Book">
+        <property name="list" ref="bookList"></property>
+    </bean>
+</beans>
